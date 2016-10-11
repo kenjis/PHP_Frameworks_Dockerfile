@@ -1,0 +1,27 @@
+version: '2'
+services:
+  ci4:
+    build: ../codeigniter4
+    container_name: frameworks_ci4
+    volumes:
+      - ../codeigniter4/source:/var/www/html
+    networks:
+      default:
+        aliases:
+         - ci3
+    restart: always
+    ports:
+      - 80:80
+
+  ci3:
+    build: ../codeigniter3
+    container_name: frameworks_ci3
+    volumes:
+      - ../codeigniter3/source:/var/www/html
+    networks:
+      default:
+        aliases:
+         - ci3
+    restart: always
+    ports:
+      - 8080:80
